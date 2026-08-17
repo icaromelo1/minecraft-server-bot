@@ -1,0 +1,21 @@
+{
+  "name": "minecraft-discord-monitor",
+  "version": "1.0.0",
+  "description": "Bot do Discord super leve para monitoramento de servidor Minecraft via RCON e Logs",
+  "main": "dist/bot.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/bot.js",
+    "dev": "ts-node src/bot.ts"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "rcon-client": "^4.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    container_name: mc-discord-bot
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      # Monta a pasta de logs do Minecraft em modo somente leitura (read-only)
+      - /home/ubuntu/projects/minecraft/data/logs:/app/logs:ro
+      # Monta a pasta de playerdata (UUID.dat) em modo somente leitura para checagem de primeiro acesso
+      - /home/ubuntu/projects/minecraft/data/world/playerdata:/app/playerdata:ro
+    networks:
+      - minecraft_default
+
+networks:
+  minecraft_default:
+    external: true
