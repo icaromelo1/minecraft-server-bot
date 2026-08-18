@@ -1,25 +1,26 @@
 # Minecraft Server Bot
 
-Bot de operação de um servidor de Minecraft: acompanha o que acontece no jogo e deixa
-administrar pelo Discord.
+Bot de operação de servidor de Minecraft. Acompanha os eventos do jogo e permite a
+administração pelo Discord.
 
-## O que faz
+## Descrição
 
-Lê os logs do servidor e conversa com ele por RCON. Publica entrada, saída, morte e
-conquista no canal; mantém um painel fixado com o estado; e expõe comandos de barra para
-consultar quem está online, ver perfil e ranking, e administrar a lista de permissão sem
-ninguém precisar de acesso à máquina.
+Lê os registros do servidor e comunica-se com ele por RCON. Publica entrada, saída, morte e
+conquista no canal, mantém um painel fixado com o estado atual e expõe comandos de barra
+para consultar jogadores conectados, perfil e ranking, além de administrar a lista de
+permissão sem exigir acesso à máquina.
 
-## A parte difícil
+## Decisão técnica
 
-O servidor dorme quando não tem gente e acorda no primeiro acesso, para não ficar ligado à
-toa. Isso quebra a suposição de que o bot sempre encontra o jogo no ar: ele precisa
-distinguir "ninguém jogando" de "servidor fora", e não anunciar queda quando é só sono.
+O servidor é suspenso quando não há jogadores e iniciado no primeiro acesso, para reduzir
+consumo. A estratégia invalida a premissa de que o jogo está sempre disponível: o bot
+precisa distinguir ausência de jogadores de indisponibilidade real, e não reportar queda
+durante a suspensão programada.
 
-## Como rodar
+## Execução
 
-Copiar `.env.example` para `.env`, preencher, e subir com Docker Compose.
+Copiar `.env.example` para `.env`, preencher as variáveis e iniciar com Docker Compose.
 
 ## Stack
 
-TypeScript · Node.js · discord.js · RCON · Docker
+TypeScript, Node.js, discord.js, RCON, Docker
